@@ -40,16 +40,18 @@ Ek simple Todo app jisme user apna account bana sake (username + password) aur s
 ## Done
 - Step 1: Next.js 16 + TypeScript + Tailwind v4 + ESLint init. Build passes.
 - Step 2: Prisma 7 setup, User/Todo schema, migration applied, dev.db created.
+- Step 3: Auth APIs (signup/login/logout) + session cookie (HMAC signed) + bcrypt. Tested OK.
+- Step 4: Todo CRUD APIs (GET/POST list+create, PATCH toggle, DELETE) user-scoped with ownership check. Tested OK.
+- Step 5: Frontend pages (signup, login, dashboard) + Tailwind UI + client fetch. Build passes.
+- Polish: light theme only (no invisible text), root `/` redirects to `/login`.
+- Step 6: README updated; final docs complete. Typecheck + lint + build pass.
 - Git repo init + initial commit + push to GitHub.
 
 ## In progress
 - (none)
 
 ## Next
-- Step 3: Auth APIs (signup/login/logout) + session cookie + bcrypt.
-- Step 4: Todo CRUD APIs.
-- Step 5: Frontend pages (login, signup, dashboard) + Tailwind UI.
-- Step 6: Test + final docs.
+- Admin panel: fixed admin (ADMIN_USERNAME in .env), `/admin` dashboard showing total users + total todos + users list (username, signup date, todo count), with admin-only access check. (Planned; user wants to start in next session.)
 
 ## How to run & test
 - Install: `npm install`
