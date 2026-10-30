@@ -17,6 +17,7 @@ Simple todo app where users create an account (username + password) and manage t
    ```env
    DATABASE_URL="file:./dev.db"
    SESSION_SECRET="any-long-random-string"
+   ADMIN_USERNAME="admin"
    ```
 3. Apply database migrations:
    ```bash
@@ -33,6 +34,7 @@ Open http://localhost:3000 (redirects to /login).
 - `/signup` — create account
 - `/login` — login
 - `/dashboard` — manage your todos
+- `/admin` — admin panel (admin user only)
 
 ## Scripts
 - `npm run lint` — lint

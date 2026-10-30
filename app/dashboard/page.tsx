@@ -15,6 +15,7 @@ export default function DashboardPage() {
   const [title, setTitle] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -28,6 +29,11 @@ export default function DashboardPage() {
       if (active) {
         setTodos(data);
         setLoading(false);
+      }
+      const meRes = await fetch("/api/auth/me");
+      if (meRes.ok) {
+        const me = await meRes.json();
+        if (active) setIsAdmin(!!me.isAdmin);
       }
     })();
     return () => {
@@ -81,9 +87,16 @@ export default function DashboardPage() {
     <main className="mx-auto max-w-xl px-4 py-8">
       <div className="mb-6 flex items-center justify-between">
         <h1 className="text-2xl font-semibold">My Todos</h1>
-        <button onClick={logout} className="text-sm underline">
-          Logout
-        </button>
+        <div className="flex items-center gap-4">
+          {isAdmin && (
+            <a href="/admin" className="text-sm underline">
+              Admin
+            </a>
+          )}
+          <button onClick={logout} className="text-sm underline">
+            Logout
+          </button>
+        </div>
       </div>
 
       <form onSubmit={addTodo} className="mb-6 flex gap-2">

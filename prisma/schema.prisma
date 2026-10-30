@@ -11,6 +11,7 @@ model User {
   username     String   @unique
   passwordHash String
   todos        Todo[]
+  sessions     Session[]
   createdAt    DateTime @default(now())
 }
 
@@ -21,4 +22,14 @@ model Todo {
   userId    String
   user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime @default(now())
+}
+
+model Session {
+  id        String    @id @default(cuid())
+  token     String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime  @default(now())
+  expiresAt DateTime
+  revokedAt DateTime?
 }

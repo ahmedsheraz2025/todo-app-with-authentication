@@ -7,16 +7,19 @@ Ek simple Todo app jisme user apna account bana sake (username + password) aur s
 - **Next.js 16 (App Router) + TypeScript** — frontend + backend ek hi codebase mein; type safety.
 - **Tailwind CSS v4** — fast styling, utility classes.
 - **Prisma 7 + SQLite** — type-safe DB queries; SQLite local file DB (no separate DB server needed).
-- **Auth (planned):** username + password, bcrypt hash, session cookie.
+- **Auth:** username + password, bcrypt hash, DB-backed session cookie.
 - **Font:** Geist Sans / Geist Mono (Next.js default).
 
 ## Folder structure
 - `app/` — Next.js pages & API routes
-- `app/api/auth/` — (planned) signup, login, logout
-- `app/api/todos/` — (planned) todo CRUD
-- `app/login/page.tsx`, `app/signup/page.tsx`, `app/dashboard/page.tsx` — (planned)
+- `app/api/auth/` — signup, login, logout, me
+- `app/api/todos/` — todo CRUD
+- `app/api/admin/` — admin-only stats, users list, user detail
+- `app/login/page.tsx`, `app/signup/page.tsx`, `app/dashboard/page.tsx`, `app/admin/page.tsx` — pages
 - `lib/prisma.ts` — Prisma client singleton (adapter-based for Prisma 7)
-- `prisma/schema.prisma` — User + Todo models
+- `lib/session.ts` — DB-backed session (7-day, HMAC-signed cookie)
+- `lib/auth.ts` — getAuthUserId, isAdminUserId, getAdminUserId
+- `prisma/schema.prisma` — User + Todo + Session models
 - `prisma/migrations/` — DB migration history
 - `prisma.config.ts` — Prisma 7 config (DB url for migrate)
 - `.env` — secrets (DATABASE_URL, SESSION_SECRET) — gitignored
@@ -35,7 +38,9 @@ Ek simple Todo app jisme user apna account bana sake (username + password) aur s
 - Todos: basic features (add, toggle, delete, list own) — user choice.
 - Styling: Tailwind — user choice.
 - DB: SQLite (local) — simple setup.
-- Git repo: separate repo in project folder; pushed to GitHub (main branch).
+- Admin identity: fixed username from env (ADMIN_USERNAME=admin); no role column. Admin must signup with that username.
+- Session tracking: DB Session table (7-day expiry, HMAC-signed cookie) to count logged-in users.
+- Admin login: separate endpoint/page flow (`/api/admin/login`), rejects non-admin credentials.
 
 ## Done
 - Step 1: Next.js 16 + TypeScript + Tailwind v4 + ESLint init. Build passes.
@@ -45,13 +50,13 @@ Ek simple Todo app jisme user apna account bana sake (username + password) aur s
 - Step 5: Frontend pages (signup, login, dashboard) + Tailwind UI + client fetch. Build passes.
 - Polish: light theme only (no invisible text), root `/` redirects to `/login`.
 - Step 6: README updated; final docs complete. Typecheck + lint + build pass.
-- Git repo init + initial commit + push to GitHub.
+- Step 8: Separate admin login. `/admin` shows its own Admin Login form (`/api/admin/login`, admin-only); normal `/login` unchanged. Non-admin blocked.
 
 ## In progress
 - (none)
 
 ## Next
-- Admin panel: fixed admin (ADMIN_USERNAME in .env), `/admin` dashboard showing total users + total todos + users list (username, signup date, todo count), with admin-only access check. (Planned; user wants to start in next session.)
+- (none) — admin panel complete. Possible future: middleware for central route protection, session cleanup job.
 
 ## How to run & test
 - Install: `npm install`
@@ -66,4 +71,4 @@ Ek simple Todo app jisme user apna account bana sake (username + password) aur s
 - **Migration:** DB structure change ka SQL file + history.
 - **Adapter (Prisma 7):** DB driver bridge (better-sqlite3).
 - **Session cookie:** login state store karne ka browser cookie.
-- **App Router:** Next.js 13+ routing system (folder-based).
+- **Session table:** DB rows for active login sessions (for logged-in count + validation).
