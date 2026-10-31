@@ -51,6 +51,8 @@ Ek simple Todo app jisme user apna account bana sake (username + password) aur s
 - Polish: light theme only (no invisible text), root `/` redirects to `/login`.
 - Step 6: README updated; final docs complete. Typecheck + lint + build pass.
 - Step 8: Separate admin login. `/admin` shows its own Admin Login form (`/api/admin/login`, admin-only); normal `/login` unchanged. Non-admin blocked.
+- Step 9: Landing page at `/` (welcome + Login/Sign up buttons); logged-in users auto-redirect to `/dashboard`. `export const instant = false` for session check.
+- Step 10: Login & Signup pages par "Back to home" link add kiya (Link component). Admin login UI manual styling tweaks preserve kiye. AGENTS.md mein manual-changes preserve rule add kiya.
 
 ## In progress
 - (none)

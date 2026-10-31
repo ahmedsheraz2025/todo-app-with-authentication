@@ -168,23 +168,23 @@ export default function AdminPage() {
       <main style={bgStyle} className="flex min-h-screen items-center justify-center bg-zinc-50 px-4">
         <form
           onSubmit={handleLogin}
-          className="w-full max-w-sm rounded-lg bg-white p-6 shadow"
+          className="w-full max-w-sm rounded-3xl bg-white p-6 shadow"
         >
-          <h1 className="mb-4 text-2xl font-semibold">Admin Login</h1>
+          <h1 className="mb-4 text-2xl text-center font-semibold">Admin Login</h1>
           {loginError && (
             <p className="mb-3 text-sm text-red-600">{loginError}</p>
           )}
-          <label className="mb-1 block text-sm">Username</label>
+          <label className="mb-1 block text-sm pb-1">Username</label>
           <input
-            className="mb-3 w-full rounded border px-3 py-2"
+            className="mb-3 w-full rounded-2xl border px-3 py-2"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
           />
-          <label className="mb-1 block text-sm">Password</label>
+          <label className="mb-1 block text-sm pb-1">Password</label>
           <input
             type="password"
-            className="mb-4 w-full rounded border px-3 py-2"
+            className="mb-4 w-full rounded-2xl border px-3 py-2"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -192,11 +192,11 @@ export default function AdminPage() {
           <button
             type="submit"
             disabled={loginLoading}
-            className="w-full rounded bg-black py-2 text-white disabled:opacity-50"
+            className="w-full relative overflow-hidden rounded-2xl border border-black mt-6 px-6 py-2.5 font-medium text-black transition-colors duration-300 hover:text-white before:absolute before:inset-0 before:-z-10 before:origin-left before:scale-x-0 before:bg-black before:transition-transform before:duration-300 hover:before:scale-x-100 z-0"
           >
             {loginLoading ? "Logging in..." : "Admin Login"}
           </button>
-          <p className="mt-4 text-sm">
+          <p className="mt-4 text-sm text-zinc-500">
             Normal user?{" "}
             <a href="/login" className="text-blue-600 hover:text-blue-800">
               Login here

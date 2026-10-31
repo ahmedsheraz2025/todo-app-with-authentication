@@ -14,6 +14,7 @@
 5. **Don't assume.** If something is unclear, ask. Don't guess my requirements.
 6. **Don't change things I didn't ask for.** No surprise refactors, deletions, or renames. Tell me first.
 7. **Keep it short and readable.** No walls of text. Use short bullets and small headings.
+8. **User also edits code manually.** If you see changes you didn't make, leave them as-is. Don't revert, overwrite, or "clean up" without asking first.
 
 ## 3. How to start a NEW project (in this order)
 1. **Understand the idea** — ask me: What are we building? Who will use it? What should it do (main features)? What is NOT needed right now?
