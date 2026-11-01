@@ -93,7 +93,7 @@ export default function DashboardPage() {
               Admin
             </a>
           )}
-          <button onClick={logout} className="text-sm underline">
+          <button onClick={logout} className="text-sm text-red-600 hover:text-red-800">
             Logout
           </button>
         </div>
@@ -101,12 +101,12 @@ export default function DashboardPage() {
 
       <form onSubmit={addTodo} className="mb-6 flex gap-2">
         <input
-          className="flex-1 rounded border px-3 py-2"
-          placeholder="New todo..."
+          className="flex-1 rounded-2xl text-sm border px-3 py-2"
+          placeholder="Add todo here..."
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <button className="rounded bg-black px-4 py-2 text-white">Add</button>
+        <button className="rounded-2xl bg-black px-4 py-2 text-white">Add</button>
       </form>
 
       {error && <p className="mb-3 text-sm text-red-600">{error}</p>}
@@ -120,7 +120,7 @@ export default function DashboardPage() {
           {todos.map((todo) => (
             <li
               key={todo.id}
-              className="flex items-center justify-between rounded border px-3 py-2"
+              className="flex items-center justify-between rounded-2xl border px-5 py-4"
             >
               <label className="flex items-center gap-2">
                 <input

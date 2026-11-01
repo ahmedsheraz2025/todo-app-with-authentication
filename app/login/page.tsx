@@ -35,7 +35,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-zinc-50 px-4">
+    <main className="flex min-h-screen items-center justify-center bg-zinc-100 px-4">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-sm rounded-3xl bg-white p-6 shadow"
@@ -66,7 +66,7 @@ export default function LoginPage() {
         </button>
         <p className="mt-4 text-sm text-zinc-600">
           No account?{" "}
-          <a href="/signup" className="text-blue-600 hover:text-blue-800">
+          <a href="/signup" className="text-zinc-600 hover:text-zinc-900">
             Sign up
           </a>
         </p>

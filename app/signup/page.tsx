@@ -35,7 +35,7 @@ export default function SignupPage() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-zinc-50 px-4">
+    <main className="flex min-h-screen items-center justify-center bg-zinc-100 px-4">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-sm rounded-3xl bg-white p-6 shadow"
@@ -66,11 +66,11 @@ export default function SignupPage() {
         </button>
         <p className="mt-4 text-sm text-zinc-600">
           Already have account?{" "}
-          <a href="/login" className="text-blue-600 hover:text-blue-800">
+          <a href="/login" className="text-zinc-600 hover:text-zinc-900">
             Login
           </a>
         </p>
-        <p className="mt-10 text-sm text-center mt-">
+        <p className="mt-8 text-sm text-center mt-">
           <Link href="/" className="text-zinc-500 hover:text-zinc-800">
             Back to home
           </Link>

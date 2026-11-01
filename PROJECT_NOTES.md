@@ -53,12 +53,13 @@ Ek simple Todo app jisme user apna account bana sake (username + password) aur s
 - Step 8: Separate admin login. `/admin` shows its own Admin Login form (`/api/admin/login`, admin-only); normal `/login` unchanged. Non-admin blocked.
 - Step 9: Landing page at `/` (welcome + Login/Sign up buttons); logged-in users auto-redirect to `/dashboard`. `export const instant = false` for session check.
 - Step 10: Login & Signup pages par "Back to home" link add kiya (Link component). Admin login UI manual styling tweaks preserve kiye. AGENTS.md mein manual-changes preserve rule add kiya.
+- User manual UI polish: rounded-2xl inputs/cards, zinc-100 bg, red logout, input/li styling — preserved (no revert).
 
 ## In progress
 - (none)
 
 ## Next
-- (none) — admin panel complete. Possible future: middleware for central route protection, session cleanup job.
+- (none)
 
 ## How to run & test
 - Install: `npm install`
